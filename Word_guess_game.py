@@ -15,13 +15,10 @@ while True:
 
     # If the guessed letter is in the word
     if guess in word:
-        # Find all positions of the guessed letter in the word
-        char_pos = [i for i, char in enumerate(word) if char == guess]
-
-        # Update the visible word to reveal the guessed letter
-        visible_word = ''.join(
-            guess if i in char_pos else char for i, char in enumerate(visible_word)
-        )
+        # Replacing '_' with the guessed character
+        for i,char in enumerate(word):
+            if char==guess:
+                visible_word = visible_word[:i]+guess+visible_word[i+1:]
     else:
         # Decrease life on a wrong guess
         print('Wrong guess!')
